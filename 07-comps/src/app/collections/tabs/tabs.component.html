@@ -1,34 +1,8 @@
-<app-divider>Table</app-divider>
-
-<app-table
-   classNames="striped celled"
-   [data]="data"
-   [headers]="headers"
-></app-table>
-
-<div class="ui hidden divider"></div>
-<app-divider>Tabs</app-divider>
-
-<app-tabs>
-   <a
-      routerLink="./"
-      routerLinkActive="active"
-      [routerLinkActiveOptions]="{ exact: true }"
-      class="item"
-      >Biography</a
-   >
-
-   <a routerLink="companies" routerLinkActive="active" class="item"
-      >Companies</a
-   >
-
-   <a routerLink="partners" routerLinkActive="active" class="item">Partners</a>
-</app-tabs>
-
-<!-- <div class="ui grid">
+<div class="ui grid">
    <div class="four wide column">
       <div class="ui vertical fluid tabular menu">
-         <a
+         <ng-content></ng-content>
+         <!-- <a
             routerLink="./"
             routerLinkActive="active"
             [routerLinkActiveOptions]="{ exact: true }"
@@ -42,7 +16,7 @@
 
          <a routerLink="partners" routerLinkActive="active" class="item"
             >Partners</a
-         >
+         > -->
       </div>
    </div>
 
@@ -51,4 +25,4 @@
          <router-outlet></router-outlet>
       </div>
    </div>
-</div> -->
+</div>

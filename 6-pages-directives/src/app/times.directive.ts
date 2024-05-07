@@ -1,7 +1,7 @@
 import { Directive, Input, TemplateRef, ViewContainerRef } from '@angular/core';
 
-//      yellow  MAS DIRECTIVES EN EL JUEGO DE MATH  yellow
-//                yellow  una con input  yellow
+//        MAS DIRECTIVES EN EL JUEGO DE MATH
+//                  una con input
 
 @Directive({
    selector: '[appTimes]',
