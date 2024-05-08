@@ -8,3 +8,11 @@ import { Component, Input } from '@angular/core';
 export class StatisticsComponent {
    @Input() data: any = [];
 }
+
+/*
+stats = [
+      { value: 22, label: '# of Users' },
+      { value: 300, label: 'Revenue' },
+      { value: 50, label: 'Reviews' },
+   ];
+*/
