@@ -1,2 +1,15 @@
 <app-divider>Modal Comp</app-divider>
-<app-modal></app-modal>
+<button class="ui positive basic button" (click)="onClick()">Show Modal</button>
+
+<app-modal (close)="onClick()" *ngIf="modalOpen">
+   <div modalTitle>Reusable Title</div>
+
+   <p>Reusable content</p>
+
+   <div modalFooter>
+      <button class="ui teal button" (click)="onClick()">Custom Btn</button>
+   </div>
+</app-modal>
+
+<app-divider>Accordion Comp</app-divider>
+<app-accordion [items]="items"></app-accordion>

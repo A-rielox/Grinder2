@@ -1,29 +1,26 @@
-<!-- TENGO QUE RENDERIZARLO EN EL BODY -->
-
 <div (click)="onCloseClick()" class="ui dimmer visible active">
    <div (click)="$event.stopPropagation()" class="ui modal visible active">
       <i (click)="onCloseClick()" class="close icon"></i>
 
       <div class="header">
-         <!-- <ng-content select="[modalTitle]"></ng-content> -->
-         MODAL HEADER
+         <ng-content select="[modalTitle]"></ng-content>
       </div>
 
       <div class="content">
-         <!-- <ng-content></ng-content> -->
-         MODAL CONTENT
+         <ng-content></ng-content>
       </div>
 
       <!-- con css pa mostrar solo un footer, el default o uno q pase el user -->
+      <!-- 🦶 footer custom -->
       <div class="actions">
-         <!-- 🦶 footer custom -->
-         <!-- <ng-content select="[modalFooter]"></ng-content> -->
-         MODAL FOOTER
+         <ng-content select="[modalFooter]"></ng-content>
       </div>
 
       <!-- 🦶 footer default -->
       <div class="actions actions-default">
-         <button (click)="onCloseClick()" class="ui button">OK</button>
+         <button (click)="onCloseClick()" class="ui violet button">
+            Default
+         </button>
       </div>
    </div>
 </div>

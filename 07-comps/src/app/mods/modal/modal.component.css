@@ -1,0 +1,15 @@
+/* :empty --> no tien ni un child */
+/* va a ocultar el "footer custom" si no se pasa el componente */
+.actions:empty {
+   display: none;
+}
+
+.actions-default {
+   display: none;
+}
+
+/* + pal sibling */
+/* el display: block se lo aplica al sibling solamente */
+.actions:empty + .actions-default {
+   display: block;
+}
