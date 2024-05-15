@@ -34,7 +34,7 @@ export class WikipediaService {
         },
       })
       .pipe(
-        map((res: WikipediaResponse) => res?.query?.search)
+        map((res) => res?.query?.search)
         // pluck('query', 'search')
       );
   }
