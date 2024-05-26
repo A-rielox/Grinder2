@@ -1,13 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { MathValidators } from '../math-validators';
+import { delay, filter, scan } from 'rxjs';
 
 @Component({
    selector: 'app-equation',
    templateUrl: './equation.component.html',
    styleUrls: ['./equation.component.css'],
 })
-export class EquationComponent {
+export class EquationComponent implements OnInit {
    secondsPerSolution = 0;
 
    mathForm = new FormGroup(
@@ -30,10 +31,40 @@ export class EquationComponent {
    // 1  3  5 --->
    // 1  4  9 --->
 
-   // " this.mathForm.statusChanges " emite un evento (es un EventEmitter)  cada q se ingresa un valor al input, lo q emite es VALID o INVALID segun es status de la form
+   // " this.mathForm.statusChanges " emite un evento (es un Observable)  cada q se ingresa un valor al input, lo q emite es VALID o INVALID segun es status de la form
    //
    // con .valueChanges.subscribe() haria una operacion cada vez q cambia el valor del input
    //
+
+   ngOnInit() {
+      this.mathForm.statusChanges
+         .pipe(
+            filter((value) => value === 'VALID'),
+            delay(300),
+            scan(
+               (acc, curr) => {
+                  return {
+                     numberSolved: acc.numberSolved + 1,
+                     startTime: acc.startTime,
+                  };
+               },
+               { numberSolved: 0, startTime: new Date() }
+            )
+         )
+         .subscribe(({ numberSolved, startTime }) => {
+            this.secondsPerSolution =
+               (new Date().getTime() - startTime.getTime()) /
+               numberSolved /
+               1000;
+
+            this.mathForm.setValue({
+               a: this.randomNumber(),
+               b: this.randomNumber(),
+               answer: '',
+            });
+            // a setValue() le tengo q pasar todos los valores de la form, si solo quiero resetear algunos ( xq pueden ser muchos inputs ) ocupo .patchValue({ solo valores a actualizar })
+         });
+   }
 
    randomNumber() {
       return Math.floor(Math.random() * 10);

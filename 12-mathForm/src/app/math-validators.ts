@@ -3,6 +3,9 @@ import { AbstractControl } from '@angular/forms';
 
 export class MathValidators {
    // ( statics no tienen acceso a props de su clase )
+   // p' no tener q crear instancias como :
+   //    const mathV = new MathValidators();
+   //    mathV.addition(...)
 
    static addition(target: string, sourceOne: string, sourceTwo: string) {
       return (form: AbstractControl) => {
