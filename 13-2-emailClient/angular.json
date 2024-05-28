@@ -3,7 +3,7 @@
    "version": 1,
    "newProjectRoot": "projects",
    "projects": {
-      "13-emailClient": {
+      "13-2-emailClient": {
          "projectType": "application",
          "schematics": {},
          "root": "",
@@ -11,11 +11,11 @@
          "prefix": "app",
          "architect": {
             "build": {
-               "builder": "@angular-devkit/build-angular:browser",
+               "builder": "@angular-devkit/build-angular:application",
                "options": {
-                  "outputPath": "dist/13-email-client",
+                  "outputPath": "dist/13-2-email-client",
                   "index": "src/index.html",
-                  "main": "src/main.ts",
+                  "browser": "src/main.ts",
                   "polyfills": ["zone.js"],
                   "tsConfig": "tsconfig.app.json",
                   "assets": ["src/favicon.ico", "src/assets"],
@@ -39,12 +39,9 @@
                      "outputHashing": "all"
                   },
                   "development": {
-                     "buildOptimizer": false,
                      "optimization": false,
-                     "vendorChunk": true,
                      "extractLicenses": false,
-                     "sourceMap": true,
-                     "namedChunks": true
+                     "sourceMap": true
                   }
                },
                "defaultConfiguration": "production"
@@ -53,10 +50,10 @@
                "builder": "@angular-devkit/build-angular:dev-server",
                "configurations": {
                   "production": {
-                     "browserTarget": "13-emailClient:build:production"
+                     "buildTarget": "13-2-emailClient:build:production"
                   },
                   "development": {
-                     "browserTarget": "13-emailClient:build:development"
+                     "buildTarget": "13-2-emailClient:build:development"
                   }
                },
                "defaultConfiguration": "development"
@@ -64,7 +61,7 @@
             "extract-i18n": {
                "builder": "@angular-devkit/build-angular:extract-i18n",
                "options": {
-                  "browserTarget": "13-emailClient:build"
+                  "buildTarget": "13-2-emailClient:build"
                }
             },
             "test": {

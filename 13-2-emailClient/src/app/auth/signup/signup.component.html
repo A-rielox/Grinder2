@@ -1,0 +1,57 @@
+<div class="ui container">
+   <div class="ui raised segment very padded">
+      <h3>Create an Account</h3>
+
+      <form [formGroup]="authForm" class="ui form" (ngSubmit)="onSubmit()">
+         <!-- NAME -->
+         <app-input
+            inputType="text"
+            label="User Name"
+            [control]="authForm.controls.username"
+         ></app-input>
+
+         <!-- PASSWORD -->
+         <app-input
+            inputType="password"
+            label="Password"
+            [control]="authForm.controls.password"
+         ></app-input>
+
+         <!-- PASSWORD-CONFIRMATION -->
+         <app-input
+            inputType="password"
+            label="Password Confirmation"
+            [control]="authForm.controls.passwordConfirmation"
+         ></app-input>
+
+         {{ username.errors | json }}
+
+         <!-- MENSAJES ERROR GLOBAL -->
+         <div
+            *ngIf="
+               authForm.get('password')?.touched &&
+               authForm.get('passwordConfirmation')?.touched &&
+               authForm.errors
+            "
+            class="ui red basic label"
+         >
+            <p *ngIf="authForm.errors['passwordsDontMatch']">
+               Password and Password Confirmation must match
+            </p>
+
+            <p *ngIf="authForm.errors['noConnection']">
+               No internet connection detected, failed to sign up.
+            </p>
+
+            <p *ngIf="authForm.errors['unknownError']">Failed to sign up.</p>
+         </div>
+
+         <!-- SUBMIT BUTTON -->
+         <div>
+            <button class="ui green button submit">Submit</button>
+         </div>
+
+         <!-- <p>FormGroup validator: {{ authForm.errors | json }}</p> -->
+      </form>
+   </div>
+</div>
